@@ -1,6 +1,14 @@
 # Exclude individual_pdfs folder
 individual_pdfs/
 
+# Data/inputs/outputs
+input/
+*.xlsx
+*.docx
+emp_data*.json
+TODO.md
+app_streamlit.py
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -13,3 +21,5 @@ Thumbs.db
 __pycache__/
 *.pyc
 .env
+node_modules/
+*.log
