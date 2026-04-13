@@ -7,7 +7,6 @@ input/
 *.docx
 emp_data*.json
 TODO.md
-app_streamlit.py
 
 # OS files
 .DS_Store
