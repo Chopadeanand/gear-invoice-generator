@@ -1,0 +1,8 @@
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+port = $PORT  # Streamlit Cloud uses env var
+
+[theme]
+base = "light"
