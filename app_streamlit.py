@@ -6,6 +6,17 @@ import zipfile
 import io
 import tempfile
 import shutil
+import shutil as _shutil
+
+# Resolve node binary – Streamlit Cloud installs it via packages.txt
+# Common paths on Debian/Ubuntu
+_NODE_CANDIDATES = ["node", "/usr/bin/node", "/usr/local/bin/node"]
+NODE = next((p for p in _NODE_CANDIDATES if _shutil.which(p)), "node")
+
+# Auto-install node_modules if missing (needed on Streamlit Cloud)
+_BASE = os.path.dirname(os.path.abspath(__file__))
+if not os.path.exists(os.path.join(_BASE, "node_modules")):
+    subprocess.run(["npm", "install"], cwd=_BASE, capture_output=True)
 
 st.set_page_config(
     page_title="Invoice Generator",
@@ -109,7 +120,7 @@ if generate_clicked and uploaded_file:
 
         # Step 2
         progress.progress(50, text="Building Word invoices...")
-        run(["node", os.path.join(BASE_DIR, "generate_invoices.js")], "generate_invoices.js")
+        run([NODE, os.path.join(BASE_DIR, "generate_invoices.js")], "generate_invoices.js")
 
         # Step 3
         progress.progress(75, text="Creating individual PDFs...")

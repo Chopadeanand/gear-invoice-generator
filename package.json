@@ -1,5 +1,9 @@
 {
+  "name": "invoice-generator",
+  "version": "1.0.0",
+  "description": "Employee invoice generator",
+  "main": "generate_invoices.js",
   "dependencies": {
-    "docx": "^9.6.1"
+    "docx": "^8.5.0"
   }
 }
